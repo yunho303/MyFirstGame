@@ -376,7 +376,10 @@
 -r:"Library/Bee/artifacts/1900b0aEDbg.dag/UnityEngine.UI.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aEDbg.dag/WaterSystem.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aEDbg.dag/WaterSystem.ref.dll"
+"Assets/Script/Cooltime.cs"
 "Assets/Script/PlayerController.cs"
+"Assets/Script/Textbingbing.cs"
+"Assets/Script/UIManaer.cs"
 "Assets/Third Party/Quirky Series Ultimate/_Scripts/QuirkySeriesDemo.cs"
 "Assets/Third Party/Quirky Series Ultimate/_Scripts/RotateOnScroll.cs"
 -langversion:9.0
