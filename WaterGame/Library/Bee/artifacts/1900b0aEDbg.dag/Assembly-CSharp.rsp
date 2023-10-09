@@ -380,6 +380,8 @@
 "Assets/Script/PlayerController.cs"
 "Assets/Script/Textbingbing.cs"
 "Assets/Script/UIManaer.cs"
+"Assets/Scripts/Packet/ClientPacketManager.cs"
+"Assets/Scripts/Packet/Protocol.cs"
 "Assets/Third Party/Quirky Series Ultimate/_Scripts/QuirkySeriesDemo.cs"
 "Assets/Third Party/Quirky Series Ultimate/_Scripts/RotateOnScroll.cs"
 -langversion:9.0

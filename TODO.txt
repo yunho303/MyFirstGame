@@ -13,6 +13,8 @@
 
 10-08: 이동완. 목표물 제작 완.
 
+10-09~ : 서버 접속, 이동동기화 목표
+10-09: Protobuf 적용완료. bat 경로 설정. -> 나중에 PacketFormat 재확인
 
 참고영상
 물: https://www.youtube.com/watch?v=PtI9LYfx1Dc

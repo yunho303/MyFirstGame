@@ -1,0 +1,14 @@
+D:\Git\MyFirstGame\Server\StartMyFirstServer\PacketGenerator\bin\Debug\netcoreapp3.1\PacketGenerator.exe
+D:\Git\MyFirstGame\Server\StartMyFirstServer\PacketGenerator\bin\Debug\netcoreapp3.1\PacketGenerator.deps.json
+D:\Git\MyFirstGame\Server\StartMyFirstServer\PacketGenerator\bin\Debug\netcoreapp3.1\PacketGenerator.runtimeconfig.json
+D:\Git\MyFirstGame\Server\StartMyFirstServer\PacketGenerator\bin\Debug\netcoreapp3.1\PacketGenerator.runtimeconfig.dev.json
+D:\Git\MyFirstGame\Server\StartMyFirstServer\PacketGenerator\bin\Debug\netcoreapp3.1\PacketGenerator.dll
+D:\Git\MyFirstGame\Server\StartMyFirstServer\PacketGenerator\bin\Debug\netcoreapp3.1\PacketGenerator.pdb
+D:\Git\MyFirstGame\Server\StartMyFirstServer\PacketGenerator\obj\Debug\netcoreapp3.1\PacketGenerator.csproj.AssemblyReference.cache
+D:\Git\MyFirstGame\Server\StartMyFirstServer\PacketGenerator\obj\Debug\netcoreapp3.1\PacketGenerator.GeneratedMSBuildEditorConfig.editorconfig
+D:\Git\MyFirstGame\Server\StartMyFirstServer\PacketGenerator\obj\Debug\netcoreapp3.1\PacketGenerator.AssemblyInfoInputs.cache
+D:\Git\MyFirstGame\Server\StartMyFirstServer\PacketGenerator\obj\Debug\netcoreapp3.1\PacketGenerator.AssemblyInfo.cs
+D:\Git\MyFirstGame\Server\StartMyFirstServer\PacketGenerator\obj\Debug\netcoreapp3.1\PacketGenerator.csproj.CoreCompileInputs.cache
+D:\Git\MyFirstGame\Server\StartMyFirstServer\PacketGenerator\obj\Debug\netcoreapp3.1\PacketGenerator.dll
+D:\Git\MyFirstGame\Server\StartMyFirstServer\PacketGenerator\obj\Debug\netcoreapp3.1\PacketGenerator.pdb
+D:\Git\MyFirstGame\Server\StartMyFirstServer\PacketGenerator\obj\Debug\netcoreapp3.1\PacketGenerator.genruntimeconfig.cache
