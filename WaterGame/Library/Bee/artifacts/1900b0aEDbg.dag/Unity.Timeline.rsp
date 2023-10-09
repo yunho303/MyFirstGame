@@ -121,6 +121,9 @@
 -define:TIMELINE_FRAMEACCURATE
 -define:CSHARP_7_OR_LATER
 -define:CSHARP_7_3_OR_NEWER
+-r:"Assets/Libs/Google.Protobuf.dll"
+-r:"Assets/Libs/ServerCore.dll"
+-r:"Assets/Libs/System.Runtime.CompilerServices.Unsafe.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/2021.3.11f1/Editor/Data/Managed/UnityEditor.Graphs.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/2021.3.11f1/Editor/Data/Managed/UnityEngine/UnityEditor.CoreModule.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/2021.3.11f1/Editor/Data/Managed/UnityEngine/UnityEditor.DeviceSimulatorModule.dll"
@@ -346,6 +349,11 @@
 -r:"D:/Git/MyFirstGame/WaterGame/Library/PackageCache/com.unity.visualscripting@1.7.8/Runtime/VisualScripting.Flow/Dependencies/NCalc/Unity.VisualScripting.Antlr3.Runtime.dll"
 -r:"Library/Bee/artifacts/1900b0aEDbg.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aEDbg.dag/UnityEngine.UI.ref.dll"
+-analyzer:"Assets/Libs/Google.Protobuf.dll"
+-analyzer:"Assets/Libs/ServerCore.dll"
+-analyzer:"Assets/Libs/System.Buffers.dll"
+-analyzer:"Assets/Libs/System.Memory.dll"
+-analyzer:"Assets/Libs/System.Runtime.CompilerServices.Unsafe.dll"
 "Library/PackageCache/com.unity.timeline@1.6.4/Runtime/Activation/ActivationMixerPlayable.cs"
 "Library/PackageCache/com.unity.timeline@1.6.4/Runtime/Activation/ActivationPlayableAsset.cs"
 "Library/PackageCache/com.unity.timeline@1.6.4/Runtime/Activation/ActivationTrack.cs"

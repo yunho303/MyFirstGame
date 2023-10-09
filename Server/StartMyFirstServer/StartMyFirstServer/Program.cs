@@ -1,23 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Net.Sockets;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
-using Google.Protobuf;
-using Google.Protobuf.Protocol;
-using Server.Data;
+using ServerCore;
+/*using Server.Data;
 using Server.DB;
 using Server.Game;
 using ServerCore;
-using SharedDB;
+using SharedDB;*/
 //using static Google.Protobuf.Protocol.Person.Types;
 
 namespace Server
 {
-	class Program
+    class Program
 	{
 
 		/*static void GameLogicTask()
@@ -38,7 +32,7 @@ namespace Server
 		}*/
 
 
-		static void NetworkTask()
+		/*static void NetworkTask()
 		{
 			while (true)
 			{
@@ -49,7 +43,7 @@ namespace Server
 				}
 				Thread.Sleep(0);
 			}
-		}
+		}*/
 
 		static Listener _listener = new Listener();
 
@@ -117,7 +111,7 @@ namespace Server
 
 			IpAddress = ipAddr.ToString();
 
-			_listener.Init(endPoint, () => { return SessionManager.Instance.Generate(); });
+			//_listener.Init(endPoint, () => { return SessionManager.Instance.Generate(); });
 			Console.WriteLine("Listening...");
 
 			//FlushRoom();
@@ -134,15 +128,15 @@ namespace Server
 			}*/
 
 			//NetworkTask
-			{
+			/*{
 				Thread t = new Thread(NetworkTask);
 				t.Name = "Network Send";
 				t.Start();
-			}
+			}*/
 
 			//Gamelogic
 			Thread.CurrentThread.Name = "Gamelogic";
-			GameLogicTask();
+			//GameLogicTask();
 		}
 	}
 }

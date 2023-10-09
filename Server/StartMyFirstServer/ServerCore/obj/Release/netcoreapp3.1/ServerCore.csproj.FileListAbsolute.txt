@@ -1,0 +1,9 @@
+D:\Git\MyFirstGame\Server\StartMyFirstServer\ServerCore\obj\Release\netcoreapp3.1\ServerCore.GeneratedMSBuildEditorConfig.editorconfig
+D:\Git\MyFirstGame\Server\StartMyFirstServer\ServerCore\obj\Release\netcoreapp3.1\ServerCore.AssemblyInfoInputs.cache
+D:\Git\MyFirstGame\Server\StartMyFirstServer\ServerCore\obj\Release\netcoreapp3.1\ServerCore.AssemblyInfo.cs
+D:\Git\MyFirstGame\Server\StartMyFirstServer\ServerCore\obj\Release\netcoreapp3.1\ServerCore.csproj.CoreCompileInputs.cache
+D:\Git\MyFirstGame\Server\StartMyFirstServer\ServerCore\bin\Release\netcoreapp3.1\ServerCore.deps.json
+D:\Git\MyFirstGame\Server\StartMyFirstServer\ServerCore\bin\Release\netcoreapp3.1\ServerCore.dll
+D:\Git\MyFirstGame\Server\StartMyFirstServer\ServerCore\bin\Release\netcoreapp3.1\ServerCore.pdb
+D:\Git\MyFirstGame\Server\StartMyFirstServer\ServerCore\obj\Release\netcoreapp3.1\ServerCore.dll
+D:\Git\MyFirstGame\Server\StartMyFirstServer\ServerCore\obj\Release\netcoreapp3.1\ServerCore.pdb
