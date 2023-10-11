@@ -81,62 +81,28 @@ namespace Server
 			t.Interval = 10 * 1000;
 			t.Start();
 		}*/
-		public static string Name { get; } = "루나";
+		//public static string Name { get; } = "루나";
 		public static int Port { get; } = 7777;
 		public static string IpAddress { get; set; }
 
 		static void Main(string[] args)
 		{
-			/*using (SharedDbContext shared = new SharedDbContext())
-			{
-
-			}
-			ConfigManager.LoadConfig();
-			DataManager.LoadData();
+			
 
 
-
-
-			GameLogic.Instance.Push(() =>
-			{
-				GameRoom room = GameLogic.Instance.Add(1);
-			});*/
-
-
-			// DNS (Domain Name System)
 			string host = Dns.GetHostName();
 			IPHostEntry ipHost = Dns.GetHostEntry(host);
 			IPAddress ipAddr = ipHost.AddressList[4];
 			IPEndPoint endPoint = new IPEndPoint(ipAddr, 7777);
-
 			IpAddress = ipAddr.ToString();
 
-			//_listener.Init(endPoint, () => { return SessionManager.Instance.Generate(); });
+			_listener.Init(endPoint, () => { return SessionManager.Instance.Generate(); });
 			Console.WriteLine("Listening...");
 
-			//FlushRoom();
-
-
-
-			//StartServerInfoTask();
-
-			//DBTASK
-			/*{
-				Thread t = new Thread(DbTask);
-				t.Name = "DB";
-				t.Start();
-			}*/
-
-			//NetworkTask
-			/*{
-				Thread t = new Thread(NetworkTask);
-				t.Name = "Network Send";
-				t.Start();
-			}*/
-
-			//Gamelogic
-			Thread.CurrentThread.Name = "Gamelogic";
-			//GameLogicTask();
+			while (true)
+			{
+				
+			}
 		}
 	}
 }

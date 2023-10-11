@@ -16,6 +16,9 @@
 10-09~ : 서버 접속, 이동동기화 목표
 10-09: Protobuf 적용완료. bat 경로 설정. -> 나중에 PacketFormat 재확인
 
+10-11: 이동동기화 및 테스트
+         과정: 연결 -> 클라에서 정보 서버로 전달.
+
 참고영상
 물: https://www.youtube.com/watch?v=PtI9LYfx1Dc
 바닥 및 화면: https://www.youtube.com/watch?v=v15C8SbTTac&t=191s

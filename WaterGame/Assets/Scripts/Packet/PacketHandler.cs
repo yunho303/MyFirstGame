@@ -8,7 +8,7 @@ public class PacketHandler
 {
    public static void S_EnterGameHandler(PacketSession session, IMessage packet)
 	{
-		
+		Debug.Log("환영합니다. 접속.");
 
 	}
     public static void S_LeaveGameHandler(PacketSession session, IMessage packet)

@@ -7,3 +7,4 @@ D:\Git\MyFirstGame\Server\StartMyFirstServer\ServerCore\bin\Release\netcoreapp3.
 D:\Git\MyFirstGame\Server\StartMyFirstServer\ServerCore\bin\Release\netcoreapp3.1\ServerCore.pdb
 D:\Git\MyFirstGame\Server\StartMyFirstServer\ServerCore\obj\Release\netcoreapp3.1\ServerCore.dll
 D:\Git\MyFirstGame\Server\StartMyFirstServer\ServerCore\obj\Release\netcoreapp3.1\ServerCore.pdb
+D:\Git\MyFirstGame\Server\StartMyFirstServer\ServerCore\obj\Release\netcoreapp3.1\ServerCore.csproj.AssemblyReference.cache
