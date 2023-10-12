@@ -4,12 +4,22 @@ using System.Text;
 using Google.Protobuf;
 using Google.Protobuf.Protocol;
 using ServerCore;
+using StartMyFirstServer.Game;
 
 class PacketHandler
 {
     public static void C_MoveHandler(PacketSession session, IMessage packet)
     {
-        S_Move movePacket = packet as S_Move;
-
+        C_Move movePacket = packet as C_Move;
+        //받은 위치정보를 다른플레이어에게 전송.
+        S_Move broadmovePacket = packet as S_Move;
+        foreach (KeyValuePair <int,Player> p in PlayerManager.Instance._players)
+        {
+            if (p.Key != movePacket.PlayerInfo.PlayerId)
+            {
+                p.Value.Session.Send(broadmovePacket);
+            }
+            Console.WriteLine($"GetMovePacket by {movePacket.PlayerInfo.PlayerId}");
+        }
     }
 }

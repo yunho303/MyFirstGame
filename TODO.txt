@@ -19,6 +19,11 @@
 10-11: 이동동기화 및 테스트
          과정: 연결 -> 클라에서 정보 서버로 전달.
 
+         이동 동기화 패킷 클라->서버 1초에 4~5번
+         필요 패킷 정보: 속도, 위치, 방향
+
+10-12: 계속 작업
+
 참고영상
 물: https://www.youtube.com/watch?v=PtI9LYfx1Dc
 바닥 및 화면: https://www.youtube.com/watch?v=v15C8SbTTac&t=191s

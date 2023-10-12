@@ -2,6 +2,7 @@
 using System.Net;
 using System.Threading;
 using ServerCore;
+using StartMyFirstServer.Game;
 /*using Server.Data;
 using Server.DB;
 using Server.Game;
@@ -87,8 +88,8 @@ namespace Server
 
 		static void Main(string[] args)
 		{
-			
-
+			GameRoom gameRoom = new GameRoom();
+			gameRoom.RoomId = 1;
 
 			string host = Dns.GetHostName();
 			IPHostEntry ipHost = Dns.GetHostEntry(host);

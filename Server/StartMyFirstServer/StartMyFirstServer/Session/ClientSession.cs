@@ -8,12 +8,14 @@ using ServerCore;
 using System.Net;
 using Google.Protobuf.Protocol;
 using Google.Protobuf;
+using StartMyFirstServer.Game;
 
 namespace Server
 {
-	class ClientSession : PacketSession
+	public class ClientSession : PacketSession
 	{
-
+		public Player MyPlayer { get; set; }
+		public int SessionId { get; set; }
 		public void Send(IMessage packet)
 		{
 			
@@ -33,18 +35,29 @@ namespace Server
 
 			Send(new ArraySegment<byte>(sendBuffer));
 		}
-		public int SessionId { get; set; }
 
 		public override void OnConnected(EndPoint endPoint)
 		{
 			Console.WriteLine($"OnConnected : {endPoint}");
 
 			// PROTO Test
-			S_EnterGame chat = new S_EnterGame
-			{
-			};
+			MyPlayer = PlayerManager.Instance.Add();
+            {
+				MyPlayer.Info.PosX = 0;
+				MyPlayer.Info.PosY = 0;
+				MyPlayer.Info.PosZ = 0;
+				MyPlayer.Info.RotX = 0;
+				MyPlayer.Info.RotY = 0;
+				MyPlayer.Info.RotZ = 0;
+				MyPlayer.Info.VelX = 0;
+				MyPlayer.Info.VelY = 0;
+				MyPlayer.Info.VelZ = 0;
+				MyPlayer.Session = this;
 
-			Send(chat);
+			}
+			GameRoom.Instance.EnterGame(MyPlayer);
+			
+
 
 
 
@@ -57,6 +70,7 @@ namespace Server
 
 		public override void OnDisconnected(EndPoint endPoint)
 		{
+			GameRoom.Instance.LeaveGame(MyPlayer.Info.PlayerId);
 			SessionManager.Instance.Remove(this);
 
 			Console.WriteLine($"OnDisconnected : {endPoint}");

@@ -1,11 +1,12 @@
 
 using System.Collections;
+using Google.Protobuf.Protocol;
 using UnityEngine;
 using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 {
 
-
+    public int playerId;
     public bool spaceCool;
     public float rotateSpeed;
 
@@ -17,6 +18,7 @@ public class PlayerController : MonoBehaviour
     float vAxis;
     int point;
     bool swimming;
+    bool sendding;
     Rigidbody rb;
     Animator ani;
     public Camera mainCamera;
@@ -26,9 +28,10 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         point=0;
-        
+        transform.position += new Vector3(Random.Range(-5,5),Random.Range(-5,5),Random.Range(-5,5));
         spaceCool = true;
         swimming = false;
+        sendding = false;
         rb = GetComponent<Rigidbody>();
         ani = GetComponentInChildren<Animator>();
         //mainCamera.transform.localPosition = new Vector3(0,3,-2);
@@ -44,9 +47,40 @@ public class PlayerController : MonoBehaviour
     }
     void LateUpdate()
     {
-
+        if(GameManager.Instance.playerId!=-1){
+           
+            MovePacketSend();
+        }
+        
     }
-    
+    void MovePacketSend(){
+        if(sendding==false)
+            StartCoroutine(MovePacket());
+    }
+
+    IEnumerator MovePacket(){
+        sendding=true;
+        Debug.Log(GameManager.Instance.playerId);
+        
+        C_Move movePacket = new C_Move();
+        
+        movePacket.PlayerInfo.PlayerId = GameManager.Instance.playerId;
+        movePacket.PlayerInfo.PosX = transform.position.x;
+        movePacket.PlayerInfo.PosY = transform.position.y;
+        movePacket.PlayerInfo.PosZ = transform.position.z;
+        movePacket.PlayerInfo.RotX = transform.rotation.x;
+        movePacket.PlayerInfo.RotY = transform.rotation.y;
+        movePacket.PlayerInfo.RotZ = transform.rotation.z;
+        movePacket.PlayerInfo.VelX = rb.velocity.x;
+        movePacket.PlayerInfo.VelY = rb.velocity.y;
+        movePacket.PlayerInfo.VelZ = rb.velocity.z;
+        Debug.Log(movePacket + "여기0");
+        Debug.Log("여기1");
+        NetworkManager.Network.Send(movePacket);
+        Debug.Log("여기2");
+        yield return new WaitForSeconds(0.25f);
+        sendding=false;
+    }
     void CheckSwim(){
         if(rb.velocity.magnitude>1.0f){
             if(!swimming){
