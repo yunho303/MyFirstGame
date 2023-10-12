@@ -7,6 +7,7 @@ using System.Collections.ObjectModel;
 using UnityEngine;
 public class PacketHandler
 {
+	public Dictionary<int,OtherPlayerController> Players;
    public static void S_EnterGameHandler(PacketSession session, IMessage packet)
 	{
 		Debug.Log("환영합니다. 접속.");
@@ -31,8 +32,16 @@ public class PacketHandler
 			GameObject obj = MonoBehaviour.Instantiate(Resources.Load("Prefabs/OtherPlayer")as GameObject);
 			obj.name = $"Player {p.PlayerId}";
 			OtherPlayerController opc = obj.GetComponent<OtherPlayerController>();
+			//Debug.Log($"안됨+{p.PlayerId}");
+			
+			
+			OtherPlayersManager.Instance.Players.Add(p.PlayerId,opc);
+			//Debug.Log($"안됨++{p.PlayerId}");
+			if(opc==null){
+				Debug.Log(null);
+			}
 			opc.UpdateMoving(p.PosX,p.PosY, p.PosZ, p.RotX, p.RotY,p.RotZ,p.VelX,p.VelY,p.VelZ);
-			OtherPlayersManager.Instance.Players.Add(p.PlayerId,obj);
+			
 		}
 	}
 
@@ -43,14 +52,14 @@ public class PacketHandler
 
 	public static void S_MoveHandler(PacketSession session, IMessage packet)
 	{
-		GameObject target=null;
+		OtherPlayerController target=null;
 		S_Move movePacket = packet as S_Move;
 		if(!OtherPlayersManager.Instance.Players.TryGetValue(movePacket.PlayerInfo.PlayerId,out target ))
 			return;
 
 		
 		//target =  OtherPlayersManager.Instance.Players[movePacket.PlayerInfo.PlayerId];
-		OtherPlayerController opc = target.GetComponent<OtherPlayerController>();
+		OtherPlayerController opc = target;
 
 		opc.UpdateMoving(movePacket.PlayerInfo.PosX,
 		movePacket.PlayerInfo.PosY,

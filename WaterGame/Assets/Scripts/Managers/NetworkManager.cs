@@ -14,25 +14,14 @@ public class NetworkManager : MonoBehaviour
 
 	public void Send(IMessage packet)
 	{
-
-		string msgName = packet.Descriptor.Name.Replace("_", string.Empty);
-		MsgId msgId = (MsgId)Enum.Parse(typeof(MsgId), msgName);
-		
-
-		ushort size = (ushort)packet.CalculateSize();
-		byte[] sendBuffer = new byte[size + 4];
-		Array.Copy(BitConverter.GetBytes((ushort)(size + 4)), 0, sendBuffer, 0, sizeof(ushort));
-		Array.Copy(BitConverter.GetBytes((ushort)msgId), 0, sendBuffer, 2, sizeof(ushort));
-		Array.Copy(packet.ToByteArray(), 0, sendBuffer, 4, size);
-		
-		_session.Send(new ArraySegment<byte>(sendBuffer));
+		_session.Send(packet);
 	}
 
     
     void Start(){
         Init();
         
-        Debug.Log("NETSTART");
+        //Debug.Log("NETSTART");
         
     }
     void Update(){
@@ -60,8 +49,10 @@ public class NetworkManager : MonoBehaviour
 		foreach (PacketMessage packet in list)
 		{
 			Action<PacketSession, IMessage> handler = PacketManager.Instance.GetPacketHandler(packet.Id);
-			if (handler != null)
+			if (handler != null){
+				
 				handler.Invoke(_session, packet.Message);
+			}
 		}	
 	}
 

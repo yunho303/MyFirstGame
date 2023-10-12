@@ -62,22 +62,24 @@ public class PlayerController : MonoBehaviour
         sendding=true;
         Debug.Log(GameManager.Instance.playerId);
         
-        C_Move movePacket = new C_Move();
+        C_Move _movePacket = new C_Move(){
+            PlayerInfo = new PlayerInfo{
+                PlayerId = GameManager.Instance.playerId,
+                PosX = transform.position.x,
+                PosY = transform.position.y,
+                PosZ = transform.position.z,
+                RotX = transform.rotation.x,
+                RotY = transform.rotation.y,
+                RotZ = transform.rotation.z,
+                VelX = rb.velocity.x,
+                VelY = rb.velocity.y,
+                VelZ = rb.velocity.z
+            }
+        };
+       
         
-        movePacket.PlayerInfo.PlayerId = GameManager.Instance.playerId;
-        movePacket.PlayerInfo.PosX = transform.position.x;
-        movePacket.PlayerInfo.PosY = transform.position.y;
-        movePacket.PlayerInfo.PosZ = transform.position.z;
-        movePacket.PlayerInfo.RotX = transform.rotation.x;
-        movePacket.PlayerInfo.RotY = transform.rotation.y;
-        movePacket.PlayerInfo.RotZ = transform.rotation.z;
-        movePacket.PlayerInfo.VelX = rb.velocity.x;
-        movePacket.PlayerInfo.VelY = rb.velocity.y;
-        movePacket.PlayerInfo.VelZ = rb.velocity.z;
-        Debug.Log(movePacket + "여기0");
-        Debug.Log("여기1");
-        NetworkManager.Network.Send(movePacket);
-        Debug.Log("여기2");
+        NetworkManager.Network.Send(_movePacket);
+        Debug.Log("doing");
         yield return new WaitForSeconds(0.25f);
         sendding=false;
     }

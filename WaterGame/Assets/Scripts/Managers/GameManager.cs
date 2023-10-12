@@ -8,10 +8,10 @@ public class GameManager : MonoBehaviour
 
     public static GameManager Instance  = new GameManager();
 
-    public int playerId;
+    public int playerId= -1;
     void Start()
     {
-        playerId=-1;
+        //playerId=-1;
         Screen.SetResolution(640,480,false);
         Application.runInBackground = true;
     }

@@ -31,6 +31,7 @@ public class OtherPlayerController : MonoBehaviour
     {
         transform.position = new Vector3(x,y,z);
         transform.rotation = Quaternion.Euler(new Vector3(rotX,rotY,rotZ));
+        rb = GetComponent<Rigidbody>();
         rb.velocity = new Vector3(vecX,vecY,vecZ);
     }
     
