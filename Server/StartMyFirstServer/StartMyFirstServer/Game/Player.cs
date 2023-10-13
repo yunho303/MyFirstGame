@@ -12,5 +12,7 @@ namespace StartMyFirstServer.Game
         public PlayerInfo Info { get; set; } = new PlayerInfo();
         public GameRoom Room{get;set;}
         public ClientSession Session { get; set; }
+
+        public int score { get; set; }
     }
 }

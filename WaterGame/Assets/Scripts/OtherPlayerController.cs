@@ -30,7 +30,7 @@ public class OtherPlayerController : MonoBehaviour
     public void UpdateMoving(float x,float y, float z,float rotX,float rotY,float rotZ, float vecX,float vecY, float vecZ)
     {
         transform.position = new Vector3(x,y,z);
-        transform.rotation = Quaternion.Euler(new Vector3(rotX,rotY,rotZ));
+        transform.rotation = Quaternion.Euler(rotX,rotY,rotZ);
         rb = GetComponent<Rigidbody>();
         rb.velocity = new Vector3(vecX,vecY,vecZ);
     }

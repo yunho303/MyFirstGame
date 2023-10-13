@@ -14,7 +14,7 @@ namespace ServerCore
 		// [size(2)][packetId(2)][ ... ][size(2)][packetId(2)][ ... ]
 		public sealed override int OnRecv(ArraySegment<byte> buffer)
 		{
-            Console.WriteLine("?패킷전송");
+            //Console.WriteLine("?패킷전송");
 			int processLen = 0;
 			//int packetCount = 0;
 

@@ -12,10 +12,21 @@ using SharedDB;*/
 
 namespace Server
 {
+
+	
     class Program
 	{
+		static void MakeItme()
+		{
+			while (true)
+			{
+				GameRoom.Instance.MakeItem();
+                Console.WriteLine("아이템 생성");
+				//여기서 만들어서 추가.
+				Thread.Sleep(10000);
+			}
+		}
 
-		
 
 		static Listener _listener = new Listener();
 
@@ -41,7 +52,9 @@ namespace Server
 			Console.WriteLine("Listening...");
 			JobTimer.Instance.Push(FlushRoom);
 
-
+			Thread t = new Thread(MakeItme);
+			t.Name = "MAKEITEM";
+			t.Start();
 			while (true)
 			{
 				JobTimer.Instance.Flush();

@@ -43,6 +43,7 @@ namespace Server
 			// PROTO Test
 			MyPlayer = PlayerManager.Instance.Add();
             {
+				MyPlayer.Info.PlayerId = SessionId;
 				MyPlayer.Info.PosX = 0;
 				MyPlayer.Info.PosY = 0;
 				MyPlayer.Info.PosZ = 0;

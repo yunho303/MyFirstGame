@@ -13,6 +13,10 @@ enum MsgId {
   S_MOVE = 5;
   C_PONG = 6;
   S_PING = 7;
+  S_MAKEITEM = 8;
+  C_GETITEM = 9;
+  S_SCORE = 10;
+  S_GIVEITEMINFO = 11;
 }
 
 message PlayerInfo {
@@ -27,7 +31,16 @@ message PlayerInfo {
   float velY = 9;
   float velZ = 10;
 }
-
+message ScoreInfo {
+  int32 playerId = 1;
+  int32 score = 2;
+}
+message ItemInfo {
+  int32 itemId = 1;
+  int32 posX = 2;
+  float posY = 3;
+  float posZ = 4;
+}
 message S_EnterGame {
   PlayerInfo player = 1;
 }
@@ -55,4 +68,20 @@ message C_Pong {
 }
 
 message S_Ping {
+}
+
+message S_Makeitem {
+  ItemInfo iteminfo =1;
+}
+message S_Giveiteminfo {
+  repeated ItemInfo iteminfos = 1;
+}
+message C_Getitem {
+  int32 playerId = 1;
+  int32 itemId = 2;
+}
+
+message S_Score {
+  repeated ScoreInfo scoreInfo = 1;
+  int32 itemId = 2;
 }

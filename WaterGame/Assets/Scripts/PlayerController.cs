@@ -65,7 +65,7 @@ public class PlayerController : MonoBehaviour
     IEnumerator MovePacket(){
         
         sendding=true;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.25f);
         
         //Debug.Log(GameManager.Instance.playerId);
         
@@ -75,18 +75,18 @@ public class PlayerController : MonoBehaviour
                 PosX = transform.position.x,
                 PosY = transform.position.y,
                 PosZ = transform.position.z,
-                RotX = transform.rotation.x,
-                RotY = transform.rotation.y,
-                RotZ = transform.rotation.z,
+                RotX = transform.rotation.eulerAngles.x,
+                RotY = transform.rotation.eulerAngles.y,
+                RotZ = transform.rotation.eulerAngles.z,
                 VelX = rb.velocity.x,
                 VelY = rb.velocity.y,
                 VelZ = rb.velocity.z
             }
         };
-       
+        Debug.Log($"{GameManager.Instance.playerId} + {transform.rotation.eulerAngles.x}");
         
         GameManager.Instance.NetworkManager.Send(_movePacket);
-        Debug.Log("doing");
+        //Debug.Log("doing");
         //yield return new WaitForSeconds(0.25f);
         
         sendding=false;

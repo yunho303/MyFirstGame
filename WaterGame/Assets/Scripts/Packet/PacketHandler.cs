@@ -52,8 +52,13 @@ public class PacketHandler
 
 	public static void S_MoveHandler(PacketSession session, IMessage packet)
 	{
+		
+
 		OtherPlayerController target=null;
 		S_Move movePacket = packet as S_Move;
+
+		if(movePacket.PlayerInfo.PlayerId==GameManager.Instance.playerId)
+			return;
 		if(!OtherPlayersManager.Instance.Players.TryGetValue(movePacket.PlayerInfo.PlayerId,out target ))
 			return;
 
@@ -77,4 +82,14 @@ public class PacketHandler
 	{
 	}
 
+	public static void S_MakeitemHandler(PacketSession session, IMessage packet)
+	{
+	}
+	public static void S_ScoreHandler(PacketSession session, IMessage packet)
+	{
+	}
+
+	public static void S_GiveiteminfoHandler(PacketSession session, IMessage packet)
+	{
+	}
 }
