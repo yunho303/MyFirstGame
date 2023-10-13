@@ -6,12 +6,13 @@ using System.Net;
 using UnityEngine;
 using Google.Protobuf;
 using Google.Protobuf.Protocol;
+using UnityEngine.PlayerLoop;
 
 public class NetworkManager : MonoBehaviour
 {
 	ServerSession _session = new ServerSession();
-    public static NetworkManager Network = new NetworkManager();
-
+	
+	
 	public void Send(IMessage packet)
 	{
 		_session.Send(packet);
@@ -29,11 +30,11 @@ public class NetworkManager : MonoBehaviour
 	IEnumerator Cosend(){
 		yield return new WaitForSeconds(3);
 		C_Pong pong = new C_Pong();
-		NetworkManager.Network.Send(pong);
+		_session.Send(pong);
 	}
 
     void Update(){
-        Network.Update_NET();
+        Update_NET();
 
     }
 	public void Init()

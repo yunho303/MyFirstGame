@@ -127,11 +127,11 @@ namespace ServerCore
 				_pendingList.Add(buff);
 			}
 			_sendArgs.BufferList = _pendingList;
-
+			//Debug.Log($"pendingList = {_pendingList}");
 			try
 			{
 				bool pending = _socket.SendAsync(_sendArgs);
-				Debug.Log("pending");
+				//Debug.Log("pending");
 				if (pending == false)
 					OnSendCompleted(null, _sendArgs);
 			}

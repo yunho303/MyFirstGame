@@ -6,9 +6,19 @@ public class GameManager : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    public static GameManager Instance  = new GameManager();
-
+    public static GameManager Instance  = null;
+    public NetworkManager NetworkManager;
     public int playerId= -1;
+
+    void Awake() {
+        
+
+        if(null==Instance){
+            Instance=this;
+        }else{
+            Debug.Log("초기화안됨.");
+        }
+    }
     void Start()
     {
         //playerId=-1;

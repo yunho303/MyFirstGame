@@ -49,18 +49,25 @@ public class PlayerController : MonoBehaviour
     {
         if(GameManager.Instance.playerId!=-1){
            
-            //MovePacketSend();
+            MovePacketSend();
         }
         
     }
     void MovePacketSend(){
-        if(sendding==false)
+        if(sendding==false && GameManager.Instance.NetworkManager!=null){
+            
             StartCoroutine(MovePacket());
+        }else{
+            //Debug.Log("Not ready");
+        }
     }
 
     IEnumerator MovePacket(){
+        
         sendding=true;
-        Debug.Log(GameManager.Instance.playerId);
+        yield return new WaitForSeconds(1f);
+        
+        //Debug.Log(GameManager.Instance.playerId);
         
         C_Move _movePacket = new C_Move(){
             PlayerInfo = new PlayerInfo{
@@ -78,9 +85,10 @@ public class PlayerController : MonoBehaviour
         };
        
         
-        NetworkManager.Network.Send(_movePacket);
+        GameManager.Instance.NetworkManager.Send(_movePacket);
         Debug.Log("doing");
-        yield return new WaitForSeconds(0.25f);
+        //yield return new WaitForSeconds(0.25f);
+        
         sendding=false;
     }
     void CheckSwim(){
