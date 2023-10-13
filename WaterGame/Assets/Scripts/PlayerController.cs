@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour
     {
         if(GameManager.Instance.playerId!=-1){
            
-            MovePacketSend();
+            //MovePacketSend();
         }
         
     }

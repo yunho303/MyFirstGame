@@ -72,4 +72,9 @@ public class PacketHandler
 		movePacket.PlayerInfo.VelZ
 		);
 	}
+
+	public static void S_PingHandler(PacketSession session, IMessage packet)
+	{
+	}
+
 }

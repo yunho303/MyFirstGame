@@ -121,7 +121,6 @@
 -define:CSHARP_7_OR_LATER
 -define:CSHARP_7_3_OR_NEWER
 -r:"Assets/Libs/Google.Protobuf.dll"
--r:"Assets/Libs/ServerCore.dll"
 -r:"Assets/Libs/System.Runtime.CompilerServices.Unsafe.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/2021.3.11f1/Editor/Data/Managed/UnityEngine/UnityEditor.CoreModule.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/2021.3.11f1/Editor/Data/Managed/UnityEngine/UnityEditor.DeviceSimulatorModule.dll"
@@ -390,6 +389,9 @@
 "Assets/Scripts/Packet/Protocol.cs"
 "Assets/Scripts/Packet/ServerSession.cs"
 "Assets/Scripts/PlayerController.cs"
+"Assets/Scripts/ServerCore/Connector.cs"
+"Assets/Scripts/ServerCore/RecvBuffer.cs"
+"Assets/Scripts/ServerCore/Session.cs"
 "Assets/Scripts/Textbingbing.cs"
 "Assets/Scripts/UIManaer.cs"
 "Assets/Third Party/Quirky Series Ultimate/_Scripts/QuirkySeriesDemo.cs"

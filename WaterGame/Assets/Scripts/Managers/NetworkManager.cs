@@ -22,8 +22,16 @@ public class NetworkManager : MonoBehaviour
         Init();
         
         //Debug.Log("NETSTART");
-        
+		
+        StartCoroutine(Cosend());
     }
+
+	IEnumerator Cosend(){
+		yield return new WaitForSeconds(3);
+		C_Pong pong = new C_Pong();
+		NetworkManager.Network.Send(pong);
+	}
+
     void Update(){
         Network.Update_NET();
 

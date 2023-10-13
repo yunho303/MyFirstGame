@@ -24,4 +24,9 @@ class PacketHandler
             Console.WriteLine($"GetMovePacket by {movePacket.PlayerInfo.PlayerId}");
         }*/
     }
+
+    public static void C_PongHandler(PacketSession session, IMessage packet)
+    {
+        Console.WriteLine("Pong");
+    }
 }

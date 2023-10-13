@@ -15,77 +15,17 @@ namespace Server
     class Program
 	{
 
-		/*static void GameLogicTask()
-		{
-			while (true)
-			{
-				GameLogic.Instance.Update();
-				Thread.Sleep(0);
-			}
-		}
-		static void DbTask()
-		{
-			while (true)
-			{
-				DbTransaction.Instance.Flush();
-				Thread.Sleep(0);
-			}
-		}*/
-
-
-		/*static void NetworkTask()
-		{
-			while (true)
-			{
-				List<ClientSession> sessions = SessionManager.Instance.GetSessions();
-				foreach (ClientSession session in sessions)
-				{
-					session.FlushSend();
-				}
-				Thread.Sleep(0);
-			}
-		}*/
+		
 
 		static Listener _listener = new Listener();
 
-		/*static void StartServerInfoTask()
-		{
-			var t = new System.Timers.Timer();
-			t.AutoReset = true;
-			t.Elapsed += new System.Timers.ElapsedEventHandler((s, e) =>
-			{
-				//TODO
-				using (SharedDbContext shared = new SharedDbContext())
-				{
-					ServerDb serverDb = shared.Servers.Where(s => s.Name == Name).FirstOrDefault();
-					if (serverDb != null)
-					{
-						serverDb.IpAddress = IpAddress;
-						serverDb.Port = Port;
-						serverDb.BusyScore = SessionManager.Instance.GetBusyScore();
-						shared.SaveChangesEx();
-					}
-					else
-					{
-						serverDb = new ServerDb()
-						{
-							Name = Program.Name,
-							IpAddress = Program.IpAddress,
-							Port = Program.Port,
-							BusyScore = SessionManager.Instance.GetBusyScore()
-						};
-						shared.Servers.Add(serverDb);
-						shared.SaveChangesEx();
-					}
-				}
-			});
-			t.Interval = 10 * 1000;
-			t.Start();
-		}*/
-		//public static string Name { get; } = "루나";
 		public static int Port { get; } = 7777;
 		public static string IpAddress { get; set; }
 
+		static void FlushRoom()
+		{
+			JobTimer.Instance.Push(FlushRoom, 250);
+		}
 		static void Main(string[] args)
 		{
 			GameRoom gameRoom = new GameRoom();
@@ -99,10 +39,12 @@ namespace Server
 
 			_listener.Init(endPoint, () => { return SessionManager.Instance.Generate(); });
 			Console.WriteLine("Listening...");
+			JobTimer.Instance.Push(FlushRoom);
+
 
 			while (true)
 			{
-				
+				JobTimer.Instance.Flush();
 			}
 		}
 	}
