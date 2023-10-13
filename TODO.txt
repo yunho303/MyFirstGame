@@ -24,6 +24,8 @@
 
 10-12: 계속 작업
 
+10-13: 클라->서버 패킷 전송안되는 오류 해결
+
 참고영상
 물: https://www.youtube.com/watch?v=PtI9LYfx1Dc
 바닥 및 화면: https://www.youtube.com/watch?v=v15C8SbTTac&t=191s
