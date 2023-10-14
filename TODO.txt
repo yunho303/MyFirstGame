@@ -36,6 +36,14 @@ scproj확장자 파일에 추가
          플레이어 접속종료, 벽뚫방지, Refactoring, 플레이어          머리위 아이디 표시, SCORE 개선
          핑퐁 구현 -> TCP에서 핑 퐁을 구현해야하는이유가
 
+앞으로 할 것
+1. 모든 유저의 로직이 전달되지않도록 하기(방 나누고 시야 범위 정하기)
+2. Lock 처리방식을 PacketQueue 방식으로 교체
+3. DB 연동
+4. ASP .NET 활용해서 로그인 구현
+
+
+
 참고영상
 물: https://www.youtube.com/watch?v=PtI9LYfx1Dc
 바닥 및 화면: https://www.youtube.com/watch?v=v15C8SbTTac&t=191s
