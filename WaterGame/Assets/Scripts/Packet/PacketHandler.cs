@@ -4,6 +4,7 @@ using ServerCore;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using UnityEngine;
 public class PacketHandler
 {
@@ -84,12 +85,60 @@ public class PacketHandler
 
 	public static void S_MakeitemHandler(PacketSession session, IMessage packet)
 	{
+		//아이템 하나씩 생성되는거 생성.
+		S_Makeitem makeItemPacket = packet as S_Makeitem;
+		GameObject obj = MonoBehaviour.Instantiate(Resources.Load("Prefabs/Object")as GameObject,
+		new Vector3(makeItemPacket.Iteminfo.PosX,makeItemPacket.Iteminfo.PosY,makeItemPacket.Iteminfo.PosZ),
+		Quaternion.identity);
+		obj.name = $"Item {makeItemPacket.Iteminfo.ItemId}";
+			
+		ItemManager.Instance.Items.Add(makeItemPacket.Iteminfo.ItemId, obj);
 	}
 	public static void S_ScoreHandler(PacketSession session, IMessage packet)
 	{
+		//이러면 ScoreMAnager 필요없네 그냥 받아서 출력하면되네
+		//일단 UI까지 연동해버리자.
+		S_Score scorePacket = packet as S_Score;
+
+		//아이템 삭제가 되나?..
+		if(scorePacket.ItemId!=-1){
+			GameObject.Destroy(ItemManager.Instance.Items[scorePacket.ItemId]);
+			ItemManager.Instance.Items.Remove(scorePacket.ItemId);
+		}
+		
+
+		List <ScoreInfo> SC = new List<ScoreInfo>();
+		UIManaer scoreTextScript = GameManager.Instance.pc.scoreText.GetComponent<UIManaer>();
+		foreach(ScoreInfo info in scorePacket.ScoreInfo){
+			//탑 10 띄워주고
+			
+			SC.Add(info);
+			if(info.PlayerId==GameManager.Instance.playerId){
+				scoreTextScript.UpdateUI(info.Score);
+			}
+
+			
+		}
+		SC = SC.OrderBy(x=>x.Score).Reverse().ToList();
+		GameManager.Instance.pc.score10Text.GetComponent<UIManaer>().UpdateUI(SC);
+		
+
 	}
 
 	public static void S_GiveiteminfoHandler(PacketSession session, IMessage packet)
 	{
+		//아이탬 리스트 받아서 아이템 만들어서 출력.
+		S_Giveiteminfo spawnPacket = packet as S_Giveiteminfo;
+		foreach(ItemInfo item in spawnPacket.Iteminfos){
+			GameObject obj = MonoBehaviour.Instantiate(Resources.Load("Prefabs/Object")as GameObject,
+			new Vector3(item.PosX,item.PosY,item.PosZ),
+			Quaternion.identity);
+			obj.name = $"Item {item.ItemId}";
+			
+			ItemManager.Instance.Items.Add(item.ItemId, obj);
+			
+			
+		}
+
 	}
 }

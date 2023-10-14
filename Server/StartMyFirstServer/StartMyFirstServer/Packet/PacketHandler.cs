@@ -57,13 +57,7 @@ class PacketHandler
 
 
         //올린 스코어 Broadcast
-        S_Score scorePacket = new S_Score();
-        scorePacket.ItemId = getItemPacket.ItemId;
-        foreach (Player p in GameRoom.Instance._players.Values)
-        {
-            scorePacket.ScoreInfo.Add(new ScoreInfo {PlayerId=p.Info.PlayerId, Score=p.score });
-            
-        }
-        GameRoom.Instance.Broadcast(scorePacket);
+        GameRoom.Instance.GiveAllScoreInfo(getItemPacket.ItemId);
+        
     }
 }

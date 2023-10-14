@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
 
     public Image jumpImage;
     public Text scoreText;
+    public Text score10Text;
 
 
     float hAxis;
@@ -22,8 +23,7 @@ public class PlayerController : MonoBehaviour
     Rigidbody rb;
     Animator ani;
     public Camera mainCamera;
-    public float mousex;
-    public float mousey;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -83,7 +83,7 @@ public class PlayerController : MonoBehaviour
                 VelZ = rb.velocity.z
             }
         };
-        Debug.Log($"{GameManager.Instance.playerId} + {transform.rotation.eulerAngles.x}");
+        //Debug.Log($"{GameManager.Instance.playerId} + {transform.rotation.eulerAngles.x}");
         
         GameManager.Instance.NetworkManager.Send(_movePacket);
         //Debug.Log("doing");
@@ -165,11 +165,20 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerEnter(Collider other) {
         if(other.tag =="Point"){
-            point++;
-            UIManaer scoreTextScript = scoreText.GetComponent<UIManaer>();
-            scoreTextScript.UpdateUI(point);
-            Destroy(other.gameObject);
-            Debug.Log($"GetPoint +{point}");
+
+
+            if(GameManager.Instance.NetworkManager!=null){
+                C_Getitem getItemPacket = new C_Getitem();
+                getItemPacket.PlayerId = GameManager.Instance.playerId;
+                Debug.Log(other.gameObject.name);
+                string[] name_arr = other.gameObject.name.Split(" ");
+                getItemPacket.ItemId = int.Parse(name_arr[1]);
+                GameManager.Instance.NetworkManager.Send(getItemPacket);
+            }
+
+            //바로 포인트 x 서버의 응답을 받아야함. 순서가 있기에
+            //point++;
+            
         }
     }
     IEnumerator Stun(){

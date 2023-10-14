@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 
     public static GameManager Instance  = null;
     public NetworkManager NetworkManager;
+    public PlayerController pc;
     public int playerId= -1;
 
     void Awake() {

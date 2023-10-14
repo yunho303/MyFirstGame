@@ -71,7 +71,7 @@ message S_Ping {
 }
 
 message S_Makeitem {
-  ItemInfo iteminfo =1;
+  ItemInfo iteminfo = 1;
 }
 message S_Giveiteminfo {
   repeated ItemInfo iteminfos = 1;

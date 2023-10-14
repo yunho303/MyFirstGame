@@ -18,20 +18,35 @@ namespace StartMyFirstServer.Game
         //룸 안에 플레이어
         public Dictionary<int, ItemInfo> _items = new Dictionary<int, ItemInfo>();
         int itemId = 0;
+        int beWide = 0;
         public void MakeItem()
         {
             ++itemId;
-
+            beWide+=3;
 
             _items.Add(itemId, new ItemInfo { ItemId = itemId, 
-                PosX =new Random().Next(-450,450), 
+                PosX =new Random().Next(-450 < -beWide ? -beWide : -450 , 450 > beWide ? beWide : 450), 
                 PosY = new Random().Next(-29, -1),
-                PosZ = new Random().Next(-450, 450)
+                PosZ = new Random().Next(-450 < -beWide ? -beWide : -450, 450 > beWide ? beWide : 450)
             });
             S_Makeitem makeItemPacket = new S_Makeitem();
             makeItemPacket.Iteminfo = _items[itemId];
             Broadcast(makeItemPacket);
         }
+
+        public void GiveAllScoreInfo(int itemId)
+        {
+            //아이템 아이디정보와 전체 스코어정보. -1일경우 아이템 x 그냥 broad
+            S_Score scorePacket = new S_Score();
+            scorePacket.ItemId = itemId;
+            foreach (Player p in GameRoom.Instance._players.Values)
+            {
+                scorePacket.ScoreInfo.Add(new ScoreInfo { PlayerId = p.Info.PlayerId, Score = p.score });
+
+            }
+            GameRoom.Instance.Broadcast(scorePacket);
+        }
+
         public void GiveItemInfo(int playerId)
         {
             //특정 플레이어에게 아이템 정보 전송
@@ -81,6 +96,11 @@ namespace StartMyFirstServer.Game
                         }
                     }
                     newPlayer.Session.Send(spawnPacket);
+                }
+
+                //스코어정보 나한테
+                {
+                    GameRoom.Instance.GiveAllScoreInfo(-1);
                 }
                 
 
