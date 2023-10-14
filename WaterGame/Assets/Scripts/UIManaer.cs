@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class UIManaer : MonoBehaviour
 {
     public Text text;
+    public TextMesh textMesh;
     void Start(){
         text = GetComponent<Text>();
         
@@ -19,7 +20,7 @@ public class UIManaer : MonoBehaviour
                 break;
         }
     }
-    public enum Type {Score, Score10};
+    public enum Type {Score, Score10, Id};
     public Type type;
     // Start is called before the first frame update
     public void UpdateUI(int num){
@@ -27,8 +28,8 @@ public class UIManaer : MonoBehaviour
             case Type.Score:
                 text.text = $"Score: {num}";
                 break;
-            case Type.Score10:
-                text.text = $"SCORE TOP 10\nhi";
+            case Type.Id:
+                textMesh.text = $"Player {num}";
                 break;
         }
     }
@@ -40,6 +41,7 @@ public class UIManaer : MonoBehaviour
                 //정렬되서온다.
                 if(ScoreInfos.Count>10){
                     string s ="";
+                    s+="TOP 10 SCORE\n\n";
                     for(int i=0;i<10;i++){
                         //10개 출력
                         s+=$"Player {ScoreInfos[i].PlayerId}: {ScoreInfos[i].Score}\n";
@@ -47,6 +49,7 @@ public class UIManaer : MonoBehaviour
                     text.text = s;
                 }else{
                     string s ="";
+                    s+="TOP 10 SCORE\n\n";
                     for(int i=0;i<ScoreInfos.Count;i++){
                         //10개 출력
                         s+=$"Player {ScoreInfos[i].PlayerId}: {ScoreInfos[i].Score}\n";

@@ -60,4 +60,12 @@ class PacketHandler
         GameRoom.Instance.GiveAllScoreInfo(getItemPacket.ItemId);
         
     }
+    public static void C_LeaveGameHandler(PacketSession session, IMessage packet)
+    {
+        C_LeaveGame LGpacket = packet as C_LeaveGame;
+
+
+        GameRoom.Instance.LeaveGame(LGpacket.PlayerId);
+
+    }
 }

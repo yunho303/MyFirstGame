@@ -34,7 +34,7 @@ scproj확장자 파일에 추가
 10-14: 클라 완료 후 임시 포폴 작성
          점수 표 동기화 완료
          플레이어 접속종료, 벽뚫방지, Refactoring, 플레이어          머리위 아이디 표시, SCORE 개선
-
+         핑퐁 구현 -> TCP에서 핑 퐁을 구현해야하는이유가
 
 참고영상
 물: https://www.youtube.com/watch?v=PtI9LYfx1Dc

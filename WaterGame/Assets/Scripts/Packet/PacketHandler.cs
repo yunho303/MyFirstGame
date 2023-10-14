@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 public class PacketHandler
 {
@@ -16,11 +17,11 @@ public class PacketHandler
 		ServerSession serverSession = session as ServerSession;
 
 		GameManager.Instance.playerId = enterGamePacket.Player.PlayerId;
-
+		GameManager.Instance.pc.plyaerIdText.GetComponent<UIManaer>().UpdateUI(GameManager.Instance.playerId);
 	}
     public static void S_LeaveGameHandler(PacketSession session, IMessage packet)
 	{
-		
+		//나 종료.
 	}
 
 	public static void S_SpawnHandler(PacketSession session, IMessage packet)
@@ -35,7 +36,7 @@ public class PacketHandler
 			OtherPlayerController opc = obj.GetComponent<OtherPlayerController>();
 			//Debug.Log($"안됨+{p.PlayerId}");
 			
-			
+			obj.GetComponentInChildren<UIManaer>().UpdateUI(p.PlayerId);
 			OtherPlayersManager.Instance.Players.Add(p.PlayerId,opc);
 			//Debug.Log($"안됨++{p.PlayerId}");
 			if(opc==null){
@@ -48,6 +49,12 @@ public class PacketHandler
 
 	public static void S_DespawnHandler(PacketSession session, IMessage packet)
 	{
+		//타인 종료.
+		S_Despawn despawnPacket = packet as S_Despawn;
+		GameObject.Destroy(OtherPlayersManager.Instance.Players[despawnPacket.PlayerId].GameObject());
+		
+		OtherPlayersManager.Instance.Players.Remove(despawnPacket.PlayerId);
+
 		Debug.Log($"DeSpawnHandelr: {packet}");
 	}
 

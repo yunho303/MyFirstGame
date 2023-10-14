@@ -132,10 +132,10 @@ namespace StartMyFirstServer.Game
                 _players.Remove(playerId);
                 player.Room = null;
 
-                //본인
+                //본인 필요한가.. 이미 종료
                 {
-                    S_LeaveGame leavePacket = new S_LeaveGame();
-                    player.Session.Send(leavePacket);
+                    /*S_LeaveGame leavePacket = new S_LeaveGame();
+                    player.Session.Send(leavePacket);*/
                        
                 }
 
@@ -143,12 +143,12 @@ namespace StartMyFirstServer.Game
                 {
                     S_Despawn despawnPacket = new S_Despawn();
                     //플레이어 아이디만 전송.
-                    despawnPacket.PlayerIds.Add(player.Info.PlayerId);
-                    foreach(Player p in _players.Values)
-                    {
-                        if(player!=p)
-                            p.Session.Send(despawnPacket);
-                    }
+                    despawnPacket.PlayerId = playerId;
+                    Broadcast(despawnPacket);
+                }
+                //스코어 없애기
+                {
+                    GiveAllScoreInfo(-1);
                 }
             }
         }

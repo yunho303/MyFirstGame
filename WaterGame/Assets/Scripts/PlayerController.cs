@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     public Image jumpImage;
     public Text scoreText;
     public Text score10Text;
-
+    public TextMesh plyaerIdText;
 
     float hAxis;
     float vAxis;

@@ -17,6 +17,7 @@ enum MsgId {
   C_GETITEM = 9;
   S_SCORE = 10;
   S_GIVEITEMINFO = 11;
+  C_LEAVE_GAME = 12;
 }
 
 message PlayerInfo {
@@ -48,12 +49,16 @@ message S_EnterGame {
 message S_LeaveGame {
 }
 
+message C_LeaveGame {
+  int32 playerId = 1;
+}
+
 message S_Spawn {
   repeated PlayerInfo players = 1;
 }
 
 message S_Despawn {
-  repeated int32 playerIds = 1;
+  int32 playerId = 1;
 }
 
 message C_Move {

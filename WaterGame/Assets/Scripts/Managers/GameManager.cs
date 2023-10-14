@@ -1,5 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
+using Google.Protobuf;
+using Google.Protobuf.Protocol;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -28,8 +31,18 @@ public class GameManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public static void GameExit()
     {
-        
+        C_LeaveGame leaveGamePacket = new C_LeaveGame();
+
+        leaveGamePacket.PlayerId = Instance.playerId;
+
+        GameManager.Instance.NetworkManager.Send(leaveGamePacket);
+        Thread.Sleep(5);
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+        #else
+            Application.Quit();
+        #endif
     }
 }
